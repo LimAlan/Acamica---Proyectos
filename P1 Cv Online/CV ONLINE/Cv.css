@@ -1,0 +1,100 @@
+h1{
+    color:black;
+}
+h2{
+    color: #008080;
+    border-bottom:2px solid #008080;
+    padding: 3px;
+}
+
+h3{ color:#008080;
+}
+.uno{
+    font-size: 20px;
+    margin: 2px;
+    font-family: Helvetica;
+}
+body{
+    background-color: rgb(199, 198, 196);
+}
+
+
+.pqs{
+    border-bottom: 1px dotted rgb(236, 121, 121);
+    font-family: Verdana; 
+    
+}
+.quien-soy{
+    background-color:white;
+    margin:5px;
+    padding: 30px;
+    border-radius: 5px;
+}
+
+
+.formacion{
+    background-color:white;
+    margin:5px;
+    padding: 30px;
+    border-radius: 5px;
+}
+
+
+
+.experiencia{
+    background-color:white;
+    margin:5px;
+    padding: 30px;
+    border-radius: 5px;
+}
+
+
+.portfolio{
+    background-color:white;
+    margin:5px;
+    padding: 30px;
+    border-radius: 5px;
+}
+
+
+.perfil{
+    width:28%;
+    text-align: left;
+    float:left;
+    margin:1px;
+    margin: 10px;
+}
+#foto{
+    border-radius: 200px;
+    margin: 5px 40px 5px 40px;
+    width: 200px;
+    height: 200px;
+}
+
+.contenido{
+    width: 70%;
+    float:right;
+
+}
+a.parrafo:hover{
+    background-color: antiquewhite;
+}
+.parrafo{
+    color:black;
+    background-color: rgb(137, 102, 201);
+    border-radius: 5px;
+    padding: 2px;
+    margin:5px 40px 5px 40px;
+    font-size: 20px;
+    display: block;
+}
+.parrafo2{
+    color:black;
+    background-color: rgb(137, 102, 201);
+    border-radius: 5px;
+    padding: 2px;
+    margin:5px 40px 5px 40px;
+    font-size: 20px;
+    text-align: right;
+    
+}

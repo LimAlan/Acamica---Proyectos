@@ -1,0 +1,46 @@
+body{
+background-color: rgb(39, 177, 131);
+}
+#header{
+    width: 100%;
+    height: 150px;
+    background-color: rgb(14, 172, 74);
+    border: 2px solid aquamarine;
+    align-items: center;
+    text-align: center;
+   
+}
+
+#menu{
+    width: 40%;
+    height: 30px;
+    border: 2px solid  rgb(14, 172, 74);
+    border-radius: 10px;
+    background-color: aquamarine;
+    float: right;
+}
+#izquierda{
+    width: 20%;
+    height: 400px;
+    float: left;
+    background-color: aquamarine;
+}
+#centro{
+    width: 60%;
+    height: 400px;
+    float: left;
+}
+#derecha{
+    width: 20%;
+    height: 400px;
+    float: left;
+    background-color: aquamarine;
+}
+#abajo{
+width: 100%;
+height: 50px;
+background-color: rgb(14, 172, 74);
+clear: both;
+border: 2px solid aquamarine;
+
+}
