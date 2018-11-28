@@ -88,7 +88,8 @@ $('#borrar').on('click', (event) => {
 
 $('.imgs li img').on('click', function(event) {
   var superheroe = $(this).attr('id');  
-  cargarSuperheroe(window[superheroe]);
+  console.log(superheroe)
+  cargarSuperheroe(eval(superheroe));
 });
 
 $('#guardar').on('click', (event) => guardarPixelArt());
