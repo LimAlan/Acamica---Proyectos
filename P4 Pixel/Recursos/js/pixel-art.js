@@ -90,6 +90,7 @@ $('.imgs li img').on('click', function(event) {
   var superheroe = $(this).attr('id');  
   console.log(superheroe)
   cargarSuperheroe(eval(superheroe));
-});
+}); 
 
 $('#guardar').on('click', (event) => guardarPixelArt());
+
