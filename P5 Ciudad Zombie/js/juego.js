@@ -20,8 +20,41 @@ var Juego = {
   obstaculosCarretera: [
     /*Aca se van a agregar los obstaculos visibles. Tenemos una valla horizontal
     de ejemplo, pero podras agregar muchos mas. */
-    new Obstaculo('imagenes/valla_horizontal.png', 70, 430, 30, 30, 1)
-
+    //Vallas
+    new Obstaculo('imagenes/valla_horizontal.png', 460, 300, 30, 30, 1),
+    new Obstaculo('imagenes/valla_horizontal.png', 170, 270, 30, 30, 1),
+    new Obstaculo('imagenes/valla_horizontal.png', 150, 270, 30, 30, 1),
+    new Obstaculo('imagenes/valla_horizontal.png', 130, 270, 30, 30, 1),
+    new Obstaculo('imagenes/valla_horizontal.png', 860, 400, 30, 30, 1),
+    new Obstaculo('imagenes/valla_horizontal.png', 840, 400, 30, 30, 1),
+    new Obstaculo('imagenes/valla_horizontal.png', 820, 400, 30, 30, 1),
+    new Obstaculo('imagenes/valla_horizontal.png', 110, 400, 30, 30, 1),
+    new Obstaculo('imagenes/valla_horizontal.png', 90, 400, 30, 30, 1),
+    new Obstaculo('imagenes/valla_horizontal.png', 70, 400, 30, 30, 1),
+    new Obstaculo('imagenes/valla_vertical.png', 320, 240, 30, 30, 1),
+    new Obstaculo('imagenes/valla_vertical.png', 490, 80, 30, 30, 1),
+    new Obstaculo('imagenes/valla_vertical.png', 360, 480, 30, 30, 1),
+    new Obstaculo('imagenes/valla_vertical.png', 360, 460, 30, 30, 1),
+    new Obstaculo('imagenes/valla_vertical.png', 360, 440, 30, 30, 1),
+    //Baches
+    new Obstaculo('imagenes/bache.png', 200, 400, 30, 30, 1),
+    new Obstaculo('imagenes/bache.png', 450, 480, 30, 30, 1),
+    new Obstaculo('imagenes/bache.png', 430, 200, 30, 30, 1),
+    new Obstaculo('imagenes/bache.png', 150, 290, 30, 30, 1),
+    new Obstaculo('imagenes/bache.png', 860, 180, 30, 30, 1),
+    new Obstaculo('imagenes/bache.png', 700, 100, 30, 30, 1),
+    new Obstaculo('imagenes/bache.png', 820, 420, 60, 60, 1),
+    new Obstaculo('imagenes/bache.png', 70, 430, 50, 50, 1),
+    new Obstaculo('imagenes/bache.png', 80, 90, 70, 70, 1),
+    //Auto
+    new Obstaculo('imagenes/auto_verde_abajo.png', 70, 180, 15, 30, 1),
+    new Obstaculo('imagenes/auto_verde_abajo.png', 160, 80, 15, 30, 1),
+    new Obstaculo('imagenes/auto_verde_abajo.png', 800, 230, 15, 30, 1),
+    new Obstaculo('imagenes/auto_verde_abajo.png', 770, 500, 15, 30, 1),
+    new Obstaculo('imagenes/auto_verde_derecha.png', 230, 450, 30, 15, 1),
+    new Obstaculo('imagenes/auto_verde_derecha.png', 450, 130, 30, 15, 1),
+    // Fran
+    new Obstaculo('imagenes/fran.png', 520, 440, 50, 50, 1),
   ],
   /* Estos son los bordes con los que se puede chocar, por ejemplo, la vereda.
    Ya estan ubicados en sus lugares correspondientes. Ya aparecen en el mapa, ya
@@ -72,7 +105,8 @@ Juego.iniciarRecursos = function () {
     'imagenes/auto_rojo_derecha.png',
     'imagenes/auto_rojo_izquierda.png',
     'imagenes/auto_verde_abajo.png',
-    'imagenes/auto_verde_derecha.png'
+    'imagenes/auto_verde_derecha.png',
+    'imagenes/fran.png',
   ]);
   Resources.onReady(this.comenzar.bind(Juego));
 };
@@ -142,11 +176,11 @@ Juego.capturarMovimiento = function (tecla) {
   if (this.chequearColisiones(movX + this.jugador.x, movY + this.jugador.y)) {
     /* Aca tiene que estar la logica para mover al jugador invocando alguno
     de sus metodos  */
-  
+
     this.jugador.mover(movX + this.jugador.x, movY + this.jugador.y);
     /* COMPLETAR */
   }
-  
+
 };
 
 Juego.dibujar = function () {
@@ -217,7 +251,7 @@ Juego.chequearColisiones = function (x, y) {
     if (this.intersecan(obstaculo, this.jugador, x, y)) {
 
       /*COMPLETAR, obstaculo debe chocar al jugador*/
-
+      Obstaculo.chocar();
       puedeMoverse = false
     }
   }, this)
