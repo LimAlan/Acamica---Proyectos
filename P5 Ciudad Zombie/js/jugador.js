@@ -22,5 +22,7 @@ this.y = nuevoY;
 
 
 Jugador.perderVidas = function perderVidas(){
+  this.vidas = this.vidas-1;
+  console.log(this.vidas);
 
 };
