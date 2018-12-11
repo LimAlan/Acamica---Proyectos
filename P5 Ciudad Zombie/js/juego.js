@@ -21,7 +21,7 @@ var Juego = {
     /*Aca se van a agregar los obstaculos visibles. Tenemos una valla horizontal
     de ejemplo, pero podras agregar muchos mas. */
     //Vallas
-    new Obstaculo('imagenes/valla_horizontal.png', 460, 300, 30, 30, 1),
+    new Obstaculo('imagenes/valla_horizontal.png', 460, 280, 30, 30, 1),
     new Obstaculo('imagenes/valla_horizontal.png', 170, 270, 30, 30, 1),
     new Obstaculo('imagenes/valla_horizontal.png', 150, 270, 30, 30, 1),
     new Obstaculo('imagenes/valla_horizontal.png', 130, 270, 30, 30, 1),
@@ -31,7 +31,7 @@ var Juego = {
     new Obstaculo('imagenes/valla_horizontal.png', 110, 400, 30, 30, 1),
     new Obstaculo('imagenes/valla_horizontal.png', 90, 400, 30, 30, 1),
     new Obstaculo('imagenes/valla_horizontal.png', 70, 400, 30, 30, 1),
-    new Obstaculo('imagenes/valla_vertical.png', 490, 80, 30, 30, 1),
+    new Obstaculo('imagenes/valla_vertical.png', 420, 80, 30, 30, 1),
     new Obstaculo('imagenes/valla_vertical.png', 360, 480, 30, 30, 1),
     new Obstaculo('imagenes/valla_vertical.png', 360, 460, 30, 30, 1),
     new Obstaculo('imagenes/valla_vertical.png', 360, 440, 30, 30, 1),
@@ -51,7 +51,7 @@ var Juego = {
     new Obstaculo('imagenes/auto_verde_abajo.png', 800, 230, 15, 30, 1),
     new Obstaculo('imagenes/auto_verde_abajo.png', 770, 500, 15, 30, 1),
     new Obstaculo('imagenes/auto_verde_derecha.png', 230, 450, 30, 15, 1),
-    new Obstaculo('imagenes/auto_verde_derecha.png', 450, 130, 30, 15, 1),
+    new Obstaculo('imagenes/auto_verde_derecha.png', 580, 130, 30, 15, 1),
     // Fran
     new Obstaculo('imagenes/fran.png', 520, 440, 50, 50, 1),
   ],
@@ -76,8 +76,19 @@ var Juego = {
   ],
   // Los enemigos se agregaran en este arreglo.
   enemigos: [
+    new ZombieCaminante('imagenes/zombie3.png', 90, 80, 10, 10, 1, { desdeX: 0, hastaX: 900, desdeY: 0, hastaY: 500 }, 1),
+    new ZombieCaminante('imagenes/zombie4.png', 280, 250, 10, 10, 1, { desdeX: 0, hastaX: 900, desdeY: 0, hastaY: 500 }, 1),
+    new ZombieCaminante('imagenes/zombie4.png', 100, 440, 10, 10, 1, { desdeX: 0, hastaX: 900, desdeY: 0, hastaY: 500 }, 1),
+    new ZombieCaminante('imagenes/zombie2.png', 870, 480, 10, 10, 1, { desdeX: 0, hastaX: 900, desdeY: 0, hastaY: 500 }, 1),
+    new ZombieCaminante('imagenes/zombie4.png', 870, 160, 10, 10, 1, { desdeX: 0, hastaX: 900, desdeY: 0, hastaY: 500 }, 1),
 
-  ]
+    new ZombieConductor('imagenes/tren_horizontal.png', 400, 322, 90, 30, 3, { desdeX: 0, hastaX: 850, desdeY: 324, hastaY: 324 }, 'h', 5),
+    new ZombieConductor('imagenes/tren_vertical.png', 644, 500, 30, 90, 3, { desdeX: 644, hastaX: 644, desdeY: 0, hastaY: 500 }, 'v', 5),
+    new ZombieConductor('imagenes/tren_vertical.png', 676, 0, 30, 90, 3, { desdeX: 676, hastaX: 676, desdeY: 0, hastaY: 500 }, 'v', 5),
+  ],
+
+
+
 
 }
 
@@ -204,7 +215,9 @@ Juego.dibujar = function () {
   // Se recorren los enemigos pintandolos
   this.enemigos.forEach(function (enemigo) {
     /* Completar */
+    Dibujante.dibujarEntidad(enemigo);
   });
+
 
   // El dibujante dibuja las vidas del jugador
   var tamanio = this.anchoCanvas / this.vidasInicial;
@@ -222,6 +235,9 @@ un recorrido por los enemigos para dibujarlos en pantalla ahora habra que hacer
 una funcionalidad similar pero para que se muevan.*/
 Juego.moverEnemigos = function () {
   /* COMPLETAR */
+    this.enemigos.forEach(function (enemigo) {
+    enemigo.mover();
+  });
 };
 
 /* Recorre los enemigos para ver cual esta colisionando con el jugador
@@ -233,9 +249,11 @@ Juego.calcularAtaques = function () {
     if (this.intersecan(enemigo, this.jugador, this.jugador.x, this.jugador.y)) {
       /* Si el enemigo colisiona debe empezar su ataque
       COMPLETAR */
+      enemigo.comenzarAtaque(this.jugador);
     } else {
       /* Sino, debe dejar de atacar
       COMPLETAR */
+      enemigo.dejarDeAtacar();
     }
   }, this);
 };
@@ -250,7 +268,9 @@ Juego.chequearColisiones = function (x, y) {
     if (this.intersecan(obstaculo, this.jugador, x, y)) {
 
       /*COMPLETAR, obstaculo debe chocar al jugador*/
-      Obstaculo.chocar();
+      obstaculo.chocar(this.jugador, obstaculo.potencia);
+      obstaculo.potencia = 0;
+
       puedeMoverse = false
     }
   }, this)
