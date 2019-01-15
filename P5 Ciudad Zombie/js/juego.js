@@ -157,27 +157,19 @@ Juego.capturarMovimiento = function (tecla) {
   // El movimiento esta determinado por la velocidad del jugador
   if (tecla == 'izq') {
     movX = -velocidad;
-    this.jugador.sprite = 'imagenes/auto_rojo_izquierda.png';
-    this.jugador.ancho = 30;
-    this.jugador.alto = 15;
+
   }
   if (tecla == 'arriba') {
     movY = -velocidad;
-    this.jugador.sprite = 'imagenes/auto_rojo_arriba.png';
-    this.jugador.ancho = 15;
-    this.jugador.alto = 30;
+
   }
   if (tecla == 'der') {
     movX = velocidad;
-    this.jugador.sprite = 'imagenes/auto_rojo_derecha.png';
-    this.jugador.ancho = 30;
-    this.jugador.alto = 15;
+
   }
   if (tecla == 'abajo') {
     movY = velocidad;
-    this.jugador.sprite = 'imagenes/auto_rojo_abajo.png';
-    this.jugador.ancho = 15;
-    this.jugador.alto = 30;
+
   }
 
   // Si se puede mover hacia esa posicion hay que hacer efectivo este movimiento
@@ -185,13 +177,15 @@ Juego.capturarMovimiento = function (tecla) {
     /* Aca tiene que estar la logica para mover al jugador invocando alguno
     de sus metodos  */
 
-    this.jugador.mover(movX + this.jugador.x, movY + this.jugador.y);
+    this.jugador.mover(movX + this.jugador.x, movY + this.jugador.y, tecla);
     /* COMPLETAR */
   }
 
 };
 
 Juego.dibujar = function () {
+
+  
   // Borrar el fotograma actual
   Dibujante.borrarAreaDeJuego();
   //Se pinta la imagen de fondo segun el estado del juego
@@ -204,6 +198,7 @@ Juego.dibujar = function () {
 
   /* Completar */
   Dibujante.dibujarEntidad(this.jugador);
+  if (this.terminoJuego() || this.ganoJuego()) return;
 
   // Se recorren los obstaculos de la carretera pintandolos
   this.obstaculosCarretera.forEach(function (obstaculo) {
@@ -233,7 +228,7 @@ un recorrido por los enemigos para dibujarlos en pantalla ahora habra que hacer
 una funcionalidad similar pero para que se muevan.*/
 Juego.moverEnemigos = function () {
   /* COMPLETAR */
-    this.enemigos.forEach(function (enemigo) {
+  this.enemigos.forEach(function (enemigo) {
     enemigo.mover();
   });
 };

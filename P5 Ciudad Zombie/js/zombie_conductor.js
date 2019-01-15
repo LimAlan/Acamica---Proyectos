@@ -4,7 +4,7 @@ Por ejemplo, la cantidad parametros que recibe su constructor. En ZombieConducto
 no son exactamente los mismos parametros que en el objeto Enemigo, a diferencia
 del ZombieCaminante que eran los mismos. */
 
-var ZombieConductor = function (sprite, x, y, ancho, alto, velocidad, rangoMov,direccion,potencia) {
+var ZombieConductor = function (sprite, x, y, ancho, alto, velocidad, rangoMov, direccion) {
   /* Completar constructor a partir de Enemigo */
   //Enemigo.call(/* ... */);
 
@@ -29,17 +29,18 @@ ZombieConductor.prototype.atacar = function (jugador) {
 }
 
 ZombieConductor.prototype.mover = function () {
-  if (this.direccion === 'h') { // Si el movimiento es Horizontal
-    this.x -= this.velocidad; // muevo el eje x
-    // Si x ya llego a su limite
-    if ((this.x < this.rangoMov.desdeX) || (this.x > this.rangoMov.hastaX)) {
-      this.velocidad *= -1; 
-    }
-  } else { // Sino entonces es Vertical
-    this.y -= this.velocidad; // muevo el eje y
-    // Si y llego a su limite
-    if ((this.y < this.rangoMov.desdeY) || (this.y > this.rangoMov.hastaY)) {
-      this.velocidad *= -1; 
-    }
+  if (this.direccion === 'h') {
+    this.x -= this.velocidad;
+  } else {
+    this.y -= this.velocidad;
+    
   }
+    if ( 
+    (  (this.direccion === 'h') && ((this.x < this.rangoMov.desdeX) || (this.x > this.rangoMov.hastaX)) ) 
+    ||
+    ( (this.direccion === 'v') && ((this.y < this.rangoMov.desdeY) || (this.y > this.rangoMov.hastaY))  )
+    ) {
+    this.velocidad *= -1;
+  }
+
 }

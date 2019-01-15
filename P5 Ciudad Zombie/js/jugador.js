@@ -15,14 +15,40 @@ var Jugador = {
 
 }
 
-Jugador.mover = function(nuevoX,nuevoY){
-this.x = nuevoX;
-this.y = nuevoY;
+Jugador.mover = function (nuevoX, nuevoY, tecla) {
+  this.x = nuevoX;
+  this.y = nuevoY;
+
+  if (tecla == 'izq') {
+    this.sprite = 'imagenes/auto_rojo_izquierda.png';
+    this.ancho = 30;
+    this.alto = 15;
+  }
+  if (tecla == 'arriba') {
+   
+    this.sprite = 'imagenes/auto_rojo_arriba.png';
+    this.ancho = 15;
+    this.alto = 30;
+  }
+  if (tecla == 'der') {
+  
+    this.sprite = 'imagenes/auto_rojo_derecha.png';
+    this.ancho = 30;
+    this.alto = 15;
+  }
+  if (tecla == 'abajo') {
+ 
+    this.sprite = 'imagenes/auto_rojo_abajo.png';
+    this.ancho = 15;
+    this.alto = 30;
+  }
+
+
 };
 
 
-Jugador.perderVidas = function perderVidas(){
-  this.vidas = this.vidas-1;
+Jugador.perderVidas = function perderVidas(cantVidasaPerder) {
+  this.vidas = this.vidas - cantVidasaPerder;
   console.log(this.vidas);
 
 };
